@@ -1,0 +1,15 @@
+html,
+body {
+    height: 100vh;
+}
+
+.form-login {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 20vh;
+    
+}
+
+.form-login form {
+    text-align: center;
+}
