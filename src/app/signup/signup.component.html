@@ -1,21 +1,28 @@
 <body>
-    <main class="form-login">
-        <form>
-          <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
-          <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Username">
-            <label for="floatingInput">Username</label>
-          </div>
-          <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-          </div>
-          <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-          </div>
-          <p class="text-center text-muted mt-3 mb-3">Already has account? <a href="login" class="fw-bold text-body text-white"><u>Log in</u></a></p>
-          <button class="btn btn-primary w-100 py-2" type="submit">Sign up</button>
-        </form>
-      </main>
-    </body>
+  <main class="form-login">
+    <form (ngSubmit)="dosignup(signupform)" [formGroup]="signupform">
+        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="username" formControlName="username" placeholder="Username">
+          <label for="username">Username</label>
+        </div>
+        <div class="form-floating">
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com">
+          <label for="email">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+          <label for="password">Password</label>
+        </div>
+        <div class="alert alert-success" id="ok" role="alert" style="display: none;" #okAlert>
+          Sing up done correctly!
+        </div>
+        <div class="alert alert-danger" id= "error" role="alert" style="display: none;" #errorAlert >
+          Registration failed!
+        </div>
+        <p class="text-center text-muted mt-3 mb-3">Already has account? <a href="login" class="fw-bold text-body text-white"><u>Log in</u></a></p>
+        <button type="submit" [disabled]="!signupform.valid"
+          class="btn btn-primary w-100 py-2" type="submit">Sign up</button>
+      </form>
+    </main>
+  </body>
