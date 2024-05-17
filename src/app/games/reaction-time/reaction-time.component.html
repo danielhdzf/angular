@@ -1,0 +1,15 @@
+<div class="game-div" id="gameArea" #gameArea>
+    <div>
+        @if (!gameStarted) {
+            <h1>Reaction Time</h1>
+            <h2>Click the quickest you can when the screen turns green</h2>
+            <h2>Click anywhere to start</h2>
+        } @else if (gameStarted && !isGreen && !isTooSoon) {
+            <h1>Wait for Green</h1>
+        } @else if (gameStarted && isGreen) {
+            <h1>Click!</h1>
+        } @else if (isTooSoon && !isGreen) {
+            <h1>Too Soon!</h1>
+        }
+    </div>
+  </div>
