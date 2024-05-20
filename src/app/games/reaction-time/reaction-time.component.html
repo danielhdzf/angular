@@ -1,0 +1,22 @@
+<div class="game-div" id="gameArea" #gameArea>
+    <div>
+        @if (!gameStarted && !isGameOver) {
+            <h1>Reaction Time</h1>
+            <h2>Click the quickest you can when the screen turns green</h2>
+            <h2>Click anywhere to start</h2>
+        } @else if (gameStarted && !isGreen && !isTooSoon) {
+            <h1>Wait for Green</h1>
+        } @else if (gameStarted && isGreen) {
+            <h1>Click!</h1>
+        } @else if (isTooSoon && !isGreen) {
+            <h1>Too Soon!</h1>
+            <h2>Click anywhere to try again</h2>
+        } @else if (isGameOver) {
+            <h1>Final score: {{finalScore}}ms</h1>
+            <div class="btn-div">
+                <button class="btn btn-primary" (click)="resetGame()" id="restartButton">Restart</button>
+                <button class="btn btn-secondary">Save Score</button>
+            </div>
+        }
+    </div>
+  </div>
