@@ -11,24 +11,30 @@ export class ReactionTimeComponent {
 
   @ViewChild('gameArea') private gameArea!: ElementRef;
 
+  MAX_ITERATIONS = 4;
   gameStarted = false;
   isGreen = false;
   isTooSoon = false;
+  isGameOver = false;
   startTime!: number;
   timerId!: any;
+  iterations!: number;
+  score!: number;
+  finalScore!: string;
 
   constructor() {
   }
 
   ngAfterViewInit() {
-    this.gameArea.nativeElement.addEventListener('click', () => {
-      if (!this.gameStarted) {
+    this.gameArea.nativeElement.addEventListener('click', (event: MouseEvent) => {
+      if ((event.target as HTMLElement).id === 'restartButton') return;
+      if (!this.gameStarted && !this.isGameOver) {
         this.startGame();
       } else if (this.isTooSoon) {
         this.resetGame();
       } else if (this.isGreen) {
         this.handleGreenClick();
-      } else {
+      } else if (!this.isGreen && !this.isGameOver){
         this.handleRedClick();
       }
     });
@@ -36,8 +42,11 @@ export class ReactionTimeComponent {
 
   startGame() {
     this.gameStarted = true;
+    this.isGameOver = false;
     this.isGreen = false;
     this.isTooSoon = false;
+    this.iterations = 0;
+    this.score = 0;
     this.gameArea.nativeElement.style.backgroundColor = 'tomato';
     this.scheduleTurnGreen();
   }
@@ -54,9 +63,15 @@ export class ReactionTimeComponent {
   }
 
   handleGreenClick() {
-    const reactionTime = performance.now() - this.startTime;
-    alert(`¡Bien hecho! Tiempo de reacción: ${reactionTime.toFixed(0)} ms`);
-    this.resetGame();
+    this.score = (performance.now() - this.startTime) + this.score;
+    this.iterations++;
+    this.isGreen = false;
+    if (this.iterations < this.MAX_ITERATIONS) {
+      this.gameArea.nativeElement.style.backgroundColor = 'tomato';
+      this.scheduleTurnGreen();
+    } else {
+      this.gameEnded();
+    }
   }
 
   handleRedClick() {
@@ -69,7 +84,18 @@ export class ReactionTimeComponent {
     this.gameStarted = false;
     this.isGreen = false;
     this.isTooSoon = false;
+    this.isGameOver = false;
+    this.iterations = 0;
+    this.score = 0;
     this.gameArea.nativeElement.style.backgroundColor = 'orange';
+  }
+
+  gameEnded() {
+    this.isGameOver = true;
+    this.gameStarted = false;
+    this.score = this.score / this.MAX_ITERATIONS;
+    this.finalScore = this.score.toFixed(0);
+    this.gameArea.nativeElement.style.backgroundColor = 'cornflowerblue';
   }
   
 }
