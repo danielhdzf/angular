@@ -1,15 +1,20 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { ScoreService } from '../../services/score.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reaction-time',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './reaction-time.component.html',
   styleUrl: './reaction-time.component.css'
 })
 export class ReactionTimeComponent {
 
   @ViewChild('gameArea') private gameArea!: ElementRef;
+  @ViewChild('okAlert') private okAlert!: ElementRef;
+  @ViewChild('errorAlert') private errorAlert!: ElementRef;
 
   MAX_ITERATIONS = 4;
   gameStarted = false;
@@ -22,7 +27,11 @@ export class ReactionTimeComponent {
   score!: number;
   finalScore!: string;
 
-  constructor() {
+  constructor(
+    private scoreService: ScoreService,
+    private renderer: Renderer2,
+    private router: Router
+  ) {
   }
 
   ngAfterViewInit() {
@@ -96,6 +105,23 @@ export class ReactionTimeComponent {
     this.score = this.score / this.MAX_ITERATIONS;
     this.finalScore = this.score.toFixed(0);
     this.gameArea.nativeElement.style.backgroundColor = 'cornflowerblue';
+  }
+
+  saveScore() {
+    this.scoreService.saveScore(localStorage.getItem('username')!, this.score, 'reactionTime').subscribe(
+      (response) => {
+        this.renderer.setStyle(this.okAlert.nativeElement, 'display', 'block');
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 2000);
+      },
+      (error) => {
+        this.renderer.setStyle(this.errorAlert.nativeElement, 'display', 'block');
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 2000);
+      }
+    );
   }
   
 }

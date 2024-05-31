@@ -15,7 +15,15 @@
             <h1>Final score: {{finalScore}}ms</h1>
             <div class="btn-div">
                 <button class="btn btn-primary" (click)="resetGame()" id="restartButton">Restart</button>
-                <button class="btn btn-secondary">Save Score</button>
+                <button (click)="saveScore()" class="btn btn-secondary">Save Score</button>
+            </div>
+            <div class="btn-div">
+                <div class="alert alert-success" id="ok" role="alert" style="display: none;" #okAlert>
+                    Saved Score!
+                </div>
+                <div class="alert alert-danger" id="error" role="alert" style="display: none;" #errorAlert>
+                    Error saving your score !
+                </div>
             </div>
         }
     </div>
