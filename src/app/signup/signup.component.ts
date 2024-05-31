@@ -42,7 +42,7 @@ export class SignupComponent {
         }, 1500);
       },
       (error) => {
-        if (error.status === 401) {
+        if (error.status === 409) {
           this.renderer.setStyle(this.errorAlert.nativeElement, 'display', 'block');
         }
       }
