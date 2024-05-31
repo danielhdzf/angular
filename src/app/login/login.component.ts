@@ -46,7 +46,7 @@ export class LoginComponent {
       },
       (error) => {
         console.error('Login error:', error);
-        if (error.status == 401) {
+        if (error) {
           this.renderer.setStyle(this.errorAlert.nativeElement, 'display', 'block');
         }
       }
