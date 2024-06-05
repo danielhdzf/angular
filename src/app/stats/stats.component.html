@@ -1,7 +1,39 @@
 <div class="select-stats">
     <input type="radio" class="btn-check" name="options-outlined" id="btn-check-outlined" autocomplete="off" checked>
-    <label class="btn btn-outline-primary" for="btn-check-outlined">Global Standings</label>
+    <label class="btn btn-outline-primary" for="btn-check-outlined" (click)="changeStats()">Global Standings</label>
     <input type="radio" class="btn-check" name="options-outlined" id="btn-check-2-outlined" autocomplete="off">
-    <label class="btn btn-outline-secondary" for="btn-check-2-outlined">Your Stats</label>
+    <label class="btn btn-outline-secondary" for="btn-check-2-outlined" (click)="changeStats()">Your Stats</label>
 </div>
+
+<div class="stats">
+    @if (globalStats) {
+    <div class="global-stats">
+        <h1>Reaction Time</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(score of globalTop5Scores; track score; let i = $index) {
+                    <tr>
+                        <td>{{i + 1}}</td>
+                        <td>{{score.username}}</td>
+                        <td>{{score.score}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p>Average global score {{ globalAverageScore }}</p>
+    </div>  
+    } @else {   
+    <div class="your-stats">
+        <h1>Your Stats</h1>
+    </div>
+    }
+</div>
+
             

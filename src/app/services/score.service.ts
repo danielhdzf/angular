@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +17,18 @@ export class ScoreService {
     return this.http.post(url, body, { headers});
   }
 
-  getTop5Scores(game: string) {
-    if (game === 'reactionTime')
-      return this.http.get(`${this.apiUrl}/top5_time`);
-    else if (game === 'memory')
-      return this.http.get(`${this.apiUrl}/top5_level`);
-    else
-      return;
+  getTop5Scores(game: string) : Observable<any>{
+    switch (game) {
+      case 'reactionTime':
+        return this.http.get(`${this.apiUrl}/top5_time?game=${game}`);
+      case 'memory':
+        return this.http.get(`${this.apiUrl}/top5_level?game=${game}`);
+      default:
+        return Object.create(null);
+    }
   }
 
-  getAverageScore(game: string) {
-    return this.http.get(`${this.apiUrl}/average`);
+  getAverageScore(game: string) : Observable<any>{
+    return this.http.get(`${this.apiUrl}/average?game=${game}`);
   }
 }
