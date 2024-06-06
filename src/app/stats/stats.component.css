@@ -7,6 +7,11 @@
     width: 300px;
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 .select-stats {
     display: flex;
     justify-content: center;
@@ -20,14 +25,26 @@
 }
 
 .table-container {
-    border: 2px solid black;
-    width: 200px;
+    width: 600px;
     margin: 20px 0;
+    display: flex;
+    align-items: center;
 }
+
+.table-container table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    margin-right: 20px;
+}
+
 .table-container div {
     border-bottom: 2px solid black;
     padding: 5px;
 }
 .table-container div:last-child {
     border-bottom: none;
+}
+
+.table-container p {
+    margin-left: 20px;
 }

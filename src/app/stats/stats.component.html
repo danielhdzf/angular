@@ -9,29 +9,50 @@
     @if (globalStats) {
     <div class="global-stats">
         <h1>Reaction Time</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for(score of globalTop5Scores; track score; let i = $index) {
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td>{{i + 1}}</td>
-                        <td>{{score.username}}</td>
-                        <td>{{score.score}}</td>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Score</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-        <p>Average global score {{ globalAverageScore }}</p>
+                </thead>
+                <tbody>
+                    @for(score of globalTop5Scores; track score; let i = $index) {
+                        <tr>
+                            <td>{{i + 1}}</td>
+                            <td>{{score.username}}</td>
+                            <td>{{score.score}}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <p>Average global score: {{ globalAverageScore }}</p>
+        </div>
     </div>  
     } @else {   
     <div class="your-stats">
-        <h1>Your Stats</h1>
+        <h1>Reaction Time</h1>
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(score of userTop5Scores; track score; let i = $index) {
+                        <tr>
+                            <td>{{i + 1}}</td>
+                            <td>{{score.score}}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <p>Average score: {{ userAverageScore }}</p>
+        </div>
     </div>
     }
 </div>

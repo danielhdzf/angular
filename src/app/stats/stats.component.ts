@@ -35,7 +35,7 @@ export class StatsComponent implements OnInit{
     this.scoreService.getAverageScore('reactionTime').subscribe(
       (response: any) => {
       if (response) {
-        this.globalAverageScore = response;
+        this.globalAverageScore = response.toFixed(0);
       }
     });
 
@@ -49,7 +49,7 @@ export class StatsComponent implements OnInit{
     this.statsService.getAverageScore(username,'reactionTime').subscribe(
       (response: any) => {
       if (response) {
-        this.userAverageScore = response.average;
+        this.userAverageScore = response.toFixed(0);
       }
     });
   }
