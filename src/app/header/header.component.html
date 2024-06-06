@@ -28,7 +28,7 @@
             <ul class="navbar-nav ms-auto">
                 @if(isLoggedIn) {
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Log Out</a>
+                        <a class="nav-link active" (click)="logout()" href="home">Log Out</a>
                     </li>
                 } @else {
                     <li class="nav-item">
