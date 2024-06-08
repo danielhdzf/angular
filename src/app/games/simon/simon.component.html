@@ -1,0 +1,14 @@
+<div class="game-container">
+    <div class="start-info" #startInfo>
+        <h1>Simon Says</h1>
+        <h2>Repeat the sequence of colors. If the sequence is correct, it will increase by one </h2>
+        <button class="btn btn-primary" (click)="startGame()" id="startButton">Start Game</button>
+    </div>
+    <div class="game-board">
+        <div class="color-btn red" (click)="handleColorClick('red')"></div>
+        <div class="color-btn green" (click)="handleColorClick('green')"></div>
+        <div class="color-btn blue" (click)="handleColorClick('blue')"></div>
+        <div class="color-btn yellow" (click)="handleColorClick('yellow')"></div>
+    </div>
+    <p>{{ message }}</p>
+</div>

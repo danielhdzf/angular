@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ReactionTimeComponent } from './games/reaction-time/reaction-time.component';
 import { StatsComponent } from './stats/stats.component';
 import { AuthGuard } from './guard/auth.guard.spec';
+import { SimonComponent } from './games/simon/simon.component';
 
 
 export const routes: Routes = [
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent},
     { path: 'reaction-time', component: ReactionTimeComponent, canActivate: [AuthGuard]},
+    { path: 'simon', component: SimonComponent, canActivate: [AuthGuard]},
     { path: 'stats', component: StatsComponent, canActivate: [AuthGuard]},
     { path: '**', redirectTo: ''}
 ];
