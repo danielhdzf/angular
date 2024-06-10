@@ -117,9 +117,6 @@ export class ReactionTimeComponent {
       },
       (error) => {
         this.renderer.setStyle(this.errorAlert.nativeElement, 'display', 'block');
-        setTimeout(() => {
-          this.router.navigate(['/home']);
-        }, 2000);
       }
     );
   }

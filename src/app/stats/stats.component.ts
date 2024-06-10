@@ -12,10 +12,11 @@ import { StatsService } from '../services/stats.service';
 })
 export class StatsComponent implements OnInit{
 
-  protected globalTop5Scores: any[] = [];
-  protected globalAverageScore: number = 0;
-  protected userTop5Scores: any[] = [];
-  protected userAverageScore: number = 0;
+  private games: string[] = ['reactionTime', 'simonSays']
+  protected globalTop5Scores: any[][] = [];
+  protected globalAverageScore: number[] = [0,0];
+  protected userTop5Scores: any[][] = [];
+  protected userAverageScore: number[] = [0,0];
   protected globalStats: boolean = true;
 
   constructor(
@@ -25,32 +26,38 @@ export class StatsComponent implements OnInit{
 
   ngOnInit() {
     const username: string = localStorage.getItem('username')!;
-    this.scoreService.getTop5Scores('reactionTime').subscribe(
-      (response: any) => {
-      if (response) {
-        this.globalTop5Scores = response;
-      }
-    });
+    this.games.forEach((game, index) => {
+      this.scoreService.getTop5Scores(game).subscribe(
+        (response: any) => {
+          if (response) {
+            this.globalTop5Scores[index] = response;
+          }
+        }
+      );
 
-    this.scoreService.getAverageScore('reactionTime').subscribe(
-      (response: any) => {
-      if (response) {
-        this.globalAverageScore = response.toFixed(0);
-      }
-    });
+      this.scoreService.getAverageScore(game).subscribe(
+        (response: any) => {
+          if (response) {
+            this.globalAverageScore[index] = parseFloat(response.toFixed(0));
+          }
+        }
+      );
 
-    this.statsService.getTop5Scores(username, 'reactionTime').subscribe(
-      (response: any) => {
-      if (response) {
-        this.userTop5Scores = response.scores;
-      }
-    });
+      this.statsService.getTop5Scores(username, game).subscribe(
+        (response: any) => {
+          if (response) {
+            this.userTop5Scores[index] = response.scores;
+          }
+        }
+      );
 
-    this.statsService.getAverageScore(username,'reactionTime').subscribe(
-      (response: any) => {
-      if (response) {
-        this.userAverageScore = response.toFixed(0);
-      }
+      this.statsService.getAverageScore(username, game).subscribe(
+        (response: any) => {
+          if (response) {
+            this.userAverageScore[index] = parseFloat(response.toFixed(0));
+          }
+        }
+      );
     });
   }
 
