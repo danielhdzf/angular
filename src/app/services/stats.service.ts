@@ -14,7 +14,7 @@ export class StatsService {
     switch (game) {
       case 'reactionTime':
         return this.http.get(`${this.apiUrl}/top5_time?username=${username}&game=${game}`);
-      case 'memory':
+      case 'simonSays':
         return this.http.get(`${this.apiUrl}/top5_level?username=${username}&game=${game}`);
       default:
         return Object.create(null);

@@ -21,7 +21,7 @@ export class ScoreService {
     switch (game) {
       case 'reactionTime':
         return this.http.get(`${this.apiUrl}/top5_time?game=${game}`);
-      case 'memory':
+      case 'simonSays':
         return this.http.get(`${this.apiUrl}/top5_level?game=${game}`);
       default:
         return Object.create(null);

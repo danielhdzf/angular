@@ -33,11 +33,16 @@
     align-items: center;
 }
 
-.start-info button {
+button {
     margin: 10px;
     padding: 10px 20px;
     font-size: 20px;
     font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
 }
 
 .game-board {
