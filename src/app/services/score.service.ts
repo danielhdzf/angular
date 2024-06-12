@@ -18,16 +18,15 @@ export class ScoreService {
   }
 
   getTop5Scores(game: string) : Observable<any>{
-    switch (game) {
-      case 'reactionTime':
-        return this.http.get(`${this.apiUrl}/top5_time?game=${game}`);
-      case 'simonSays':
-        return this.http.get(`${this.apiUrl}/top5_level?game=${game}`);
-      default:
-        return Object.create(null);
+    if(game === 'reactionTime') {
+      return this.http.get(`${this.apiUrl}/top5_time?game=${game}`);
+    } else if(game === 'simonSays' || game === 'numberSequence') {
+      return this.http.get(`${this.apiUrl}/top5_level?game=${game}`);
+    } else {
+      return Object.create(null);
     }
   }
-
+  
   getAverageScore(game: string) : Observable<any>{
     return this.http.get(`${this.apiUrl}/average?game=${game}`);
   }
