@@ -11,13 +11,12 @@ export class StatsService {
   constructor(private http: HttpClient) { }
 
   getTop5Scores(username: string, game: string) : Observable<any>{
-    switch (game) {
-      case 'reactionTime':
-        return this.http.get(`${this.apiUrl}/top5_time?username=${username}&game=${game}`);
-      case 'simonSays':
-        return this.http.get(`${this.apiUrl}/top5_level?username=${username}&game=${game}`);
-      default:
-        return Object.create(null);
+    if(game === 'reactionTime') {
+      return this.http.get(`${this.apiUrl}/top5_time?username=${username}&game=${game}`);
+    } else if(game === 'simonSays' || game === 'numberSequence') {
+      return this.http.get(`${this.apiUrl}/top5_level?username=${username}&game=${game}`);
+    } else {
+      return Object.create(null);
     }
   }
 
