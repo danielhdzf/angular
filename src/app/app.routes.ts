@@ -7,6 +7,7 @@ import { StatsComponent } from './stats/stats.component';
 import { AuthGuard } from './guard/auth.guard.spec';
 import { SimonComponent } from './games/simon/simon.component';
 import { NumberSequenceComponent } from './games/number-sequence/number-sequence.component';
+import { ColorAimComponent } from './games/color-aim/color-aim.component';
 
 
 export const routes: Routes = [
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'reaction-time', component: ReactionTimeComponent, canActivate: [AuthGuard]},
     { path: 'simon', component: SimonComponent, canActivate: [AuthGuard]},
     { path: 'number-sequence', component: NumberSequenceComponent, canActivate: [AuthGuard]},
+    { path: 'color-aim', component: ColorAimComponent, canActivate: [AuthGuard]},
     { path: 'stats', component: StatsComponent, canActivate: [AuthGuard]},
     { path: '**', redirectTo: ''}
 ];
