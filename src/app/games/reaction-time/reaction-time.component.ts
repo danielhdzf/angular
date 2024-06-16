@@ -16,7 +16,7 @@ export class ReactionTimeComponent {
   @ViewChild('okAlert') private okAlert!: ElementRef;
   @ViewChild('errorAlert') private errorAlert!: ElementRef;
 
-  MAX_ITERATIONS = 4;
+  MAX_ITERATIONS = 4; 
   gameStarted = false;
   isGreen = false;
   isTooSoon = false;

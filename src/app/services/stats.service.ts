@@ -11,7 +11,7 @@ export class StatsService {
   constructor(private http: HttpClient) { }
 
   getTop5Scores(username: string, game: string) : Observable<any>{
-    if(game === 'reactionTime') {
+    if(game === 'reactionTime' || game === 'colorAim') {
       return this.http.get(`${this.apiUrl}/top5_time?username=${username}&game=${game}`);
     } else if(game === 'simonSays' || game === 'numberSequence') {
       return this.http.get(`${this.apiUrl}/top5_level?username=${username}&game=${game}`);

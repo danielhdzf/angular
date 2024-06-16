@@ -12,7 +12,7 @@ import { StatsService } from '../services/stats.service';
 })
 export class StatsComponent implements OnInit{
 
-  private games: string[] = ['reactionTime', 'simonSays', 'numberSequence']
+  private games: string[] = ['reactionTime', 'simonSays', 'numberSequence', 'colorAim']
   protected globalTop5Scores: any[][] = [];
   protected globalAverageScore: number[] = [0,0];
   protected userTop5Scores: any[][] = [];
