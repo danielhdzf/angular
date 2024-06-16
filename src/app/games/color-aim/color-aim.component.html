@@ -1,5 +1,5 @@
 <div class="game-container">
-    @if (!gameStarted) {
+    @if (!gameStarted && !gameOver) {
         <div class="start-info" #startInfo>
             <h1>Color Aim</h1>
             <h2>Click as fast as you can the blue target</h2>
@@ -8,8 +8,20 @@
     }
     @if (gameStarted) {
         <div class="game-board">
-            <div class="target" (click)="handleTargetClick()" #target1></div>
-            <div class="target" (click)="handleTargetClick()" #target2></div>
+            <div class="target" (click)="handleTargetClick('target1')" #target1></div>
+            <div class="target" (click)="handleTargetClick('target2')" #target2></div>
+        </div>
+    } @else if (gameOver) {
+        <h1>Final score: {{finalScore}}ms</h1>
+        <div class="button-container">
+            <button class="btn btn-primary" #restartButton (click)="restartGame()" id="restartButton">Try again</button>
+            <button class="btn btn-primary" #saveButton (click)="saveScore()" id="saveButton">Save Score</button>
+        </div>
+        <div class="alert alert-success" id="ok" role="alert" style="display: none;" #okAlert>
+            Saved Score!
+        </div>
+        <div class="alert alert-danger" id="error" role="alert" style="display: none;" #errorAlert>
+            Error saving your score !
         </div>
     }
 </div>

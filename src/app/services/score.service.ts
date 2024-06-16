@@ -18,7 +18,7 @@ export class ScoreService {
   }
 
   getTop5Scores(game: string) : Observable<any>{
-    if(game === 'reactionTime') {
+    if(game === 'reactionTime' || game === 'colorAim') {
       return this.http.get(`${this.apiUrl}/top5_time?game=${game}`);
     } else if(game === 'simonSays' || game === 'numberSequence') {
       return this.http.get(`${this.apiUrl}/top5_level?game=${game}`);
