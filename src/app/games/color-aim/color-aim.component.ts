@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { ScoreService } from '../../services/score.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-color-aim',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './color-aim.component.html',
   styleUrl: './color-aim.component.css'
 })
