@@ -8,6 +8,7 @@ import { AuthGuard } from './guard/auth.guard.spec';
 import { SimonComponent } from './games/simon/simon.component';
 import { NumberSequenceComponent } from './games/number-sequence/number-sequence.component';
 import { ColorAimComponent } from './games/color-aim/color-aim.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 export const routes: Routes = [
@@ -20,5 +21,6 @@ export const routes: Routes = [
     { path: 'number-sequence', component: NumberSequenceComponent, canActivate: [AuthGuard]},
     { path: 'color-aim', component: ColorAimComponent, canActivate: [AuthGuard]},
     { path: 'stats', component: StatsComponent, canActivate: [AuthGuard]},
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     { path: '**', redirectTo: ''}
 ];

@@ -2,30 +2,42 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit,} from '@angular/core';
 import { ScoreService } from '../services/score.service';
 import { StatsService } from '../services/stats.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-stats',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, CommonModule, FormsModule],
   templateUrl: './stats.component.html',
   styleUrl: './stats.component.css'
 })
 export class StatsComponent implements OnInit{
 
-  private games: string[] = ['reactionTime', 'simonSays', 'numberSequence', 'colorAim']
-  protected globalTop5Scores: any[][] = [];
-  protected globalAverageScore: number[] = [0,0];
-  protected userTop5Scores: any[][] = [];
-  protected userAverageScore: number[] = [0,0];
-  protected globalStats: boolean = true;
+  games: string[] = ['reactionTime', 'simonSays', 'numberSequence', 'colorAim']
+  globalTop5Scores: any[][] = [];
+  globalAverageScore: number[] = [0,0];
+  userTop5Scores: any[][] = [];
+  userAverageScore: number[] = [0,0];
+  selectedOption: string = 'global';
 
   constructor(
     private scoreService: ScoreService,
     private statsService: StatsService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     const username: string = localStorage.getItem('username')!;
+
+    if (this.route) {
+      this.route.queryParams?.subscribe((params: Params) => {
+        const view = params['view'];
+        this.selectedOption = view === 'your-stats' ? 'your' : 'global';
+      });
+    }
+
     this.games.forEach((game, index) => {
       this.scoreService.getTop5Scores(game).subscribe(
         (response: any) => {
@@ -61,7 +73,7 @@ export class StatsComponent implements OnInit{
     });
   }
 
-  changeStats() {
-    this.globalStats = !this.globalStats;
+  changeStats(option: string): void {
+    this.selectedOption = option;
   }
 }
