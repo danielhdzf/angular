@@ -10,6 +10,7 @@ import { LoginService } from '../services/login.service';
 })
 export class HeaderComponent {
   protected isLoggedIn: boolean = false;
+  username: string = '';
 
   constructor( public loginService: LoginService) {}
 
@@ -18,7 +19,9 @@ export class HeaderComponent {
     this.loginService.getLoggedIn().subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
-    console.log('isLoggedIn', this.isLoggedIn);
+    if(this.isLoggedIn) {
+      this.username = localStorage.getItem('username') ?? '';
+    }
   }
 
   logout() {

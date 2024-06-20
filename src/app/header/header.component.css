@@ -3,5 +3,10 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    background: linear-gradient(to left, #df5804 0%, #fbff00 100%);
   }
+
+  .navbar .nav-link {
+    font-weight: bold;
+}
   

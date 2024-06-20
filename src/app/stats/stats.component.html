@@ -1,12 +1,12 @@
 <div class="select-stats">
-    <input type="radio" class="btn-check" name="options-outlined" id="btn-check-outlined" autocomplete="off" checked>
-    <label class="btn btn-outline-primary" for="btn-check-outlined" (click)="changeStats()">Global Standings</label>
-    <input type="radio" class="btn-check" name="options-outlined" id="btn-check-2-outlined" autocomplete="off">
-    <label class="btn btn-outline-secondary" for="btn-check-2-outlined" (click)="changeStats()">Your Stats</label>
+    <input type="radio" class="btn-check" name="statsOptions" id="btn-check-outlined" autocomplete="off" [(ngModel)]="selectedOption" value="global">
+    <label class="btn btn-outline-primary" for="btn-check-outlined" (click)="changeStats('global')" [ngClass]="{'active': selectedOption === 'global'}">Global Standings</label>
+    <input type="radio" class="btn-check" name="statsOptions" id="btn-check-2-outlined" autocomplete="off" [(ngModel)]="selectedOption" value="your">
+    <label class="btn btn-outline-secondary" for="btn-check-2-outlined" (click)="changeStats('your')" [ngClass]="{'active': selectedOption === 'your'}">Your Stats</label>
 </div>
 
 <div class="stats">
-    @if (globalStats) {
+    @if (selectedOption === 'global') {
     <div class="global-stats">
         <h1>Reaction Time</h1>
         <div class="table-container">

@@ -1,15 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatsComponent } from './stats.component';
+import { ProfileComponent } from './profile.component';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-describe('StatsComponent', () => {
-  let component: StatsComponent;
-  let fixture: ComponentFixture<StatsComponent>;
+describe('ProfileComponent', () => {
+  let component: ProfileComponent;
+  let fixture: ComponentFixture<ProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StatsComponent],
+      declarations: [],
+      imports: [HttpClientModule],
       providers: [
         {
           provide: ActivatedRoute,
@@ -22,8 +25,8 @@ describe('StatsComponent', () => {
       ]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(StatsComponent);
+
+    fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
