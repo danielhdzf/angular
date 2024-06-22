@@ -1,18 +1,20 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { UpdatePasswordComponent } from '../update-password/update-password.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [HttpClientModule, RouterModule],
+  imports: [HttpClientModule, RouterModule, UpdatePasswordComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
 
+  @ViewChild('updatePasswordModal') updatePasswordModal!: UpdatePasswordComponent;
 
   username: string = '';
   email: string = '';
@@ -38,5 +40,9 @@ export class ProfileComponent {
     setTimeout(() => {
       this.router.navigate(['/login']);
     }, 1500);
+  }
+
+  openUpdatePasswordModal() {
+    this.updatePasswordModal.openModal();
   }
 }
