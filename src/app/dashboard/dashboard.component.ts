@@ -35,7 +35,6 @@ export class DashboardComponent {
         }
       );
     });
-    console.log(this.userTop5Scores[0][0].score)
   }
 
   logout() {
