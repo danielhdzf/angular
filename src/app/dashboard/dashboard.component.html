@@ -1,0 +1,63 @@
+<body>
+<div class="card">
+    <div class="table-container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Game</th>
+                    <th>Score</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <i class="bi bi-hourglass-split"></i>
+                        Reaction Time
+                    </td>
+                    <td>{{ userTop5Scores[0][0].score }}</td>
+                    <td>
+                        <a href="reaction-time">Play</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="bi bi-ui-checks-grid"></i>
+                        Simon Says
+                    </td>
+                    <td>{{ userTop5Scores[1][0].score }}</td>
+                    <td>
+                        <a href="simon">Play</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="bi bi-infinity"></i>
+                        Number Sequence
+                    </td>
+                    <td>{{ userTop5Scores[2][0].score }}</td>
+                    <td>
+                        <a href="number-sequence">Play</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="bi bi-crosshair"></i>
+                        Color Aim
+                    </td>
+                    <td>{{ userTop5Scores[3][0].score }}</td>
+                    <td>
+                        <a href="color-aim">Play</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="right-container">
+        <img src="../../assets/img/user_profile.png">
+        <h2>{{username}}</h2>
+        <button class="btn btn-primary" (click)="navigateToStats()" id="statsButton">See your Stats</button>
+        <button class="btn btn-primary" (click)="logout()" id="logoutButton">Log Out</button>
+  </div>
+</div>
+</body>

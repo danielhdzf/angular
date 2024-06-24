@@ -1,1 +1,53 @@
-<p>TFM home page</p>
+<div class="container">
+    <h1>Welcome to the Reflex Games</h1>
+</div>
+<div class="container">
+    <h3>Here you can test your reflexes and memory with a series of games</h3>
+</div>
+<div class="container">
+    <div class="card" (click) = "navigateToDashboard()">
+        <h3><i class="bi bi-journal"></i>
+            Dashboard</h3>
+        <p>See your general data</p>
+    </div>
+    <div class="card" (click)="navigateToStats()">
+        <h3><i class="bi bi-bar-chart-line"></i>
+            Stats</h3>
+        <p>Explore your scores and those of others</p>
+    </div>
+    <div class="card" (click)="navigateToProfile()">
+        <h3><i class="bi bi-person-circle"></i>
+            Profile</h3>
+        <p>Access your profile</p>
+    </div>
+    <div class="card" (click)="navigateToLogin()">
+        <h3><i class="bi bi-person-fill-up"></i>
+            Log In</h3>
+        <p>Authenticate yourself</p>
+    </div>
+    <div class="card" (click)="navigateToSignUp()">
+        <h3><i class="bi bi-person-plus"></i>
+        Sign up</h3>
+        <p>Create a new user</p>
+    </div>
+    <div class="card" (click)="navigateToReactionTime()">
+        <h3><i class="bi bi-hourglass-split"></i>
+            Reaction Time</h3>
+        <p>Test your visual reflexes</p>
+    </div>
+    <div class="card" (click)="navigateToSimonSays()">
+        <h3><i class="bi bi-ui-checks-grid"></i>
+            Simon Says</h3>
+        <p>Remember the largest color secuence you can</p>
+    </div>
+    <div class="card" (click)="navigateToNumberSequence()">
+        <h3><i class="bi bi-infinity"></i>
+            Number Sequence</h3>
+        <p>Remember the largest number</p>
+    </div>
+    <div class="card" (click)="navigateToColorAim()">
+        <h3><i class="bi bi-crosshair"></i>
+            Color Aim</h3>
+        <p>How quick can you click the correct target</p>
+    </div>
+</div>

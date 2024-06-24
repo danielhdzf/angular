@@ -8,7 +8,8 @@
 <div class="stats">
     @if (selectedOption === 'global') {
     <div class="global-stats">
-        <h1>Reaction Time</h1>
+        <h1><i class="bi bi-hourglass-split"></i>
+            Reaction Time</h1>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -28,9 +29,10 @@
                     }
                 </tbody>
             </table>
-            <p>Average global score: {{ globalAverageScore[0] }}</p>
+            <h3>Average score: {{ globalAverageScore[0] }}</h3>
         </div>
-        <h1>Simon Says</h1>
+        <h1><i class="bi bi-ui-checks-grid"></i>
+            Simon Says</h1>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -50,9 +52,10 @@
                     }
                 </tbody>
             </table>
-            <p>Average global score: {{ globalAverageScore[1] }}</p>
+            <h3>Average score: {{ globalAverageScore[1] }}</h3>
         </div>
-        <h1>Number Sequence</h1>
+        <h1><i class="bi bi-infinity"></i>
+            Number Sequence</h1>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -72,9 +75,10 @@
                     }
                 </tbody>
             </table>
-            <p>Average global score: {{ globalAverageScore[2] }}</p>
+            <h3>Average score: {{ globalAverageScore[2] }}</h3>
         </div>
-        <h1>Color Aim</h1>
+        <h1><i class="bi bi-crosshair"></i>
+            Color Aim</h1>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -94,12 +98,13 @@
                     }
                 </tbody>
             </table>
-            <p>Average global score: {{ globalAverageScore[3] }}</p>
+            <h3>Average score: {{ globalAverageScore[3] }}</h3>
         </div>
     </div>  
     } @else {   
     <div class="your-stats">
-        <h1>Reaction Time</h1>
+        <h1><i class="bi bi-hourglass-split"></i>
+            Reaction Time</h1>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -117,9 +122,10 @@
                     }
                 </tbody>
             </table>
-            <p>Average score: {{ userAverageScore[0] }}</p>
+            <h3>Average score: {{ userAverageScore[0] }}</h3>
         </div>
-        <h1>Simon Says</h1>
+        <h1><i class="bi bi-ui-checks-grid"></i>
+            Simon Says</h1>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -137,9 +143,10 @@
                     }
                 </tbody>
             </table>
-            <p>Average score: {{ userAverageScore[1] }}</p>
+            <h3>Average score: {{ userAverageScore[1] }}</h3>
         </div>
-        <h1>Number Sequence</h1>
+        <h1><i class="bi bi-infinity"></i>
+            Number Sequence</h1>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -157,9 +164,10 @@
                     }
                 </tbody>
             </table>
-            <p>Average score: {{ userAverageScore[2] }}</p>
+            <h3>Average score: {{ userAverageScore[2] }}</h3>
         </div>
-        <h1>Color Aim</h1>
+        <h1><i class="bi bi-crosshair"></i>
+            Color Aim</h1>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -177,7 +185,7 @@
                     }
                 </tbody>
             </table>
-            <p>Average score: {{ userAverageScore[3] }}</p>
+            <h3>Average score: {{ userAverageScore[3] }}</h3>
         </div>
     </div>
     }
