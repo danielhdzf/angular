@@ -33,7 +33,7 @@ export class SignupComponent {
 
     const { username, password, email } = this.signupform.value;
 
-    this.signupService.registerUser(username!, password!, email!).subscribe(
+    this.signupService.registerUser(username!, email!, password!).subscribe(
       () => {
         this.renderer.setStyle(this.okAlert.nativeElement, 'display', 'block');
         setTimeout(() => {

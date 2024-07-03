@@ -76,7 +76,7 @@ export class SimonComponent {
   handleColorClick(color: string) {
     this.playerSequence.push(color);
     if (!this.checkSequence()) {
-      this.message = 'Game Over! Level achive ' + (this.level - 1);
+      this.message = 'Game Over! Level achived ' + (this.level - 1);
       this.renderer.setStyle(this.restartButton.nativeElement, 'display', 'block');
       this.renderer.setStyle(this.saveButton.nativeElement, 'display', 'block');
       return;
